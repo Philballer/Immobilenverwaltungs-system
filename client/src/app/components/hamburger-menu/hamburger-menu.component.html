@@ -1,0 +1,24 @@
+<button (click)="toggleSidebar()" class="lg:hidden text-white">
+  <span class="block w-6 h-1 bg-white mb-1"></span>
+  <span class="block w-6 h-1 bg-white mb-1"></span>
+  <span class="block w-6 h-1 bg-white"></span>
+</button>
+
+<div
+  [class.-translate-x-full]="!sideberVisible"
+  class="fixed top-0 left-0 h-full w-64 bg-gray-900 p-6 transform transition-transform duration-300 lg:hidden p-3"
+>
+  <button (click)="closeSidebar()" class="text-white absolute top-4 right-4">
+    <i class="fa-solid fa-xmark text-lg"></i>
+  </button>
+  <ul class="space-y-4 mt-7 p-5">
+    <li class="mt-5 mb-3" *ngFor="let option of menuOptions">
+      <a
+        href="{{ option.path }}"
+        class="block text-white hover:text-gray-400 font-medium text-lg"
+      >
+        {{ option.name }}
+      </a>
+    </li>
+  </ul>
+</div>

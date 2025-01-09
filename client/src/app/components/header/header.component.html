@@ -1,0 +1,24 @@
+<nav class="bg-blue-900 p-4 flex items-center justify-between text-white mb-9">
+  <div class="logo ms-5 flex items-center">
+    <a href="/" class="text-3xl tracking-wider font-medium"> Immoflex </a>
+    <span class="text-2xl ms-1">
+      <i class="fa-solid fa-house-chimney"></i>
+    </span>
+  </div>
+  <div class="navigation">
+    <ul class="hidden lg:block">
+      <li class="me-7 text-base font-medium trakcing-wide hover:underline">
+        <a href="/properties">Immobilien</a>
+      </li>
+      <li class="me-7 text-base font-medium trakcing-wide hover:underline">
+        <a href="/contacts">Kontakte</a>
+      </li>
+      <li class="me-7 text-base font-medium trakcing-wide hover:underline">
+        <a href="/relaitionships">Beziehungen</a>
+      </li>
+    </ul>
+    <div class="me-5">
+      <app-hamburger-menu [menuOptions]="menuOptions"></app-hamburger-menu>
+    </div>
+  </div>
+</nav>

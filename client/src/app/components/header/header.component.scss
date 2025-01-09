@@ -1,0 +1,14 @@
+nav {
+  height: 4.5rem;
+  border-bottom: 1px solid var(--dark-body-05);
+}
+
+.navigation {
+  ul {
+    list-style: none;
+
+    li {
+      display: inline;
+    }
+  }
+}
