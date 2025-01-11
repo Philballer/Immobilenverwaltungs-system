@@ -2,6 +2,7 @@ export type IProperty = {
   id?: number;
   description: string;
   address: string;
+  sizeInSqm: string;
   value: string;
 };
 

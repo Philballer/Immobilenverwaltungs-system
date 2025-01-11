@@ -39,6 +39,7 @@ export class AddEditDialogueComponent {
     description: '',
     address: '',
     value: '',
+    sizeInSqm: '',
   };
 
   private readonly dialogRef = inject(MatDialogRef<AddEditDialogueComponent>);

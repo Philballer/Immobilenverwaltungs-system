@@ -4,5 +4,10 @@
     buttonName="Immobilie hinzufügen"
   ></app-add-button>
 
-  <div></div>
+  <div *ngIf="properties$ | async as properties" class="mt-9">
+    <app-datatable
+      [data]="properties"
+      [displayedColumns]="['address', 'description', 'size', 'value']"
+    ></app-datatable>
+  </div>
 </div>

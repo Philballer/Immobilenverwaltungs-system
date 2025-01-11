@@ -19,11 +19,18 @@
       />
     </mat-form-field>
 
-    <mat-form-field appearance="fill" style="width: 100%">
-      <mat-label>Wert der Immobilie"</mat-label>
-      <input [(ngModel)]="formData.value" matInput placeholder="500,000" />
-      <mat-icon matSuffix>euro</mat-icon>
-    </mat-form-field>
+    <div class="flex justify-between">
+      <mat-form-field appearance="fill" style="width: 47%">
+        <mat-label>Große der "</mat-label>
+        <input [(ngModel)]="formData.sizeInSqm" matInput placeholder="105" />
+        <span class="px-3" matSuffix>m²</span>
+      </mat-form-field>
+      <mat-form-field appearance="fill" style="width: 47%">
+        <mat-label>Wert der Immobilie"</mat-label>
+        <input [(ngModel)]="formData.value" matInput placeholder="500,000" />
+        <mat-icon matSuffix>euro</mat-icon>
+      </mat-form-field>
+    </div>
   </div>
 </mat-dialog-content>
 
