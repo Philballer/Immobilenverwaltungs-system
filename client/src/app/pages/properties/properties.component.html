@@ -1,3 +1,8 @@
 <div class="px-9">
-  <app-add-button buttonName="Immobilie hinzufügen"></app-add-button>
+  <app-add-button
+    (buttonClick)="openAddDialogue()"
+    buttonName="Immobilie hinzufügen"
+  ></app-add-button>
+
+  <div></div>
 </div>
