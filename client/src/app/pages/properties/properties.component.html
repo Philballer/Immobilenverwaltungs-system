@@ -7,7 +7,14 @@
   <div *ngIf="properties$ | async as properties" class="mt-9">
     <app-datatable
       [data]="properties"
-      [displayedColumns]="['address', 'description', 'size', 'value']"
+      [displayedColumns]="[
+        'address',
+        'description',
+        'size',
+        'value',
+        'actions'
+      ]"
+      (onDeleteClick)="handlePropertyDelete($event)"
     ></app-datatable>
   </div>
 </div>

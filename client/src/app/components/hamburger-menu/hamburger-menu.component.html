@@ -14,8 +14,9 @@
   <ul class="space-y-4 mt-7 p-5">
     <li class="mt-5 mb-3" *ngFor="let option of menuOptions">
       <a
-        href="{{ option.path }}"
+        routerLink="{{ option.path }}"
         class="block text-white hover:text-gray-400 font-medium text-lg"
+        (click)="closeSidebar()"
       >
         {{ option.name }}
       </a>

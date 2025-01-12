@@ -1,1 +1,9 @@
-<p>base-icon works!</p>
+<div class="px-2">
+  <i
+    (click)="handleIconClick()"
+    [class]="iconClass"
+    [style.cursor]="cursorPointer ? 'pointer' : 'default'"
+    [matTooltip]="toolTip"
+  >
+  </i>
+</div>

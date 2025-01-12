@@ -30,7 +30,7 @@ export class PropertiesComponent implements OnInit {
   public openAddDialogue(): void {
     console.log('Dialogue opened');
     const dialogRef = this.dialog.open(AddEditDialogueComponent, {
-      height: '60%',
+      height: '50%',
       minWidth: '50%',
     });
 
@@ -39,5 +39,9 @@ export class PropertiesComponent implements OnInit {
 
       console.log('Dialogue closed');
     });
+  }
+
+  public handlePropertyDelete(id: number): void {
+    this._propertyService.deleteOneProperty(id.toString()).subscribe();
   }
 }
