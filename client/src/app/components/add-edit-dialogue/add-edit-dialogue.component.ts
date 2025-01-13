@@ -29,7 +29,6 @@ import { CommonModule } from '@angular/common';
     MatDialogContent,
     MatDialogActions,
     MatIconModule,
-    MatDialogClose,
   ],
   templateUrl: './add-edit-dialogue.component.html',
   styleUrl: './add-edit-dialogue.component.scss',
@@ -42,15 +41,31 @@ export class AddEditDialogueComponent {
     sizeInSqm: '',
   };
 
+  public isEdit: boolean = false;
+
   private readonly dialogRef = inject(MatDialogRef<AddEditDialogueComponent>);
 
-  public readonly data = model(this.formData);
+  private readonly editData = inject(MAT_DIALOG_DATA);
+
+  constructor() {
+    const { property, isEdit } = this.editData;
+
+    this.isEdit = isEdit;
+    if (property) {
+      this.formData = { ...property };
+    }
+  }
 
   public handleCancelClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close({
+      cancel: true,
+    });
   }
 
   public handSaveClick(): void {
-    this.dialogRef.close(this.data());
+    this.dialogRef.close({
+      property: this.formData,
+      isEdited: this.isEdit,
+    });
   }
 }

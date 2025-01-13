@@ -15,6 +15,10 @@ export class PropertyService {
     return this.http.get<IProperty[]>(this.server_URL);
   }
 
+  public getOneProperty(id: string): Observable<IProperty> {
+    return this.http.get<IProperty>(`${this.server_URL}/${id}`);
+  }
+
   public deleteOneProperty(userId: string): Observable<IProperty> {
     return this.http.delete<IProperty>(`${this.server_URL}/${userId}`);
   }

@@ -32,7 +32,7 @@ export class DatatableComponent<T> implements OnInit, AfterViewInit {
   public paginator: MatPaginator | undefined;
 
   @Output()
-  public onEditClick = new EventEmitter<void>();
+  public onEditClick = new EventEmitter<number>();
 
   @Output()
   public onDeleteClick = new EventEmitter<number>();
@@ -45,8 +45,8 @@ export class DatatableComponent<T> implements OnInit, AfterViewInit {
     if (this.paginator) this.dataSource.paginator = this.paginator;
   }
 
-  public HandleEditIconClick(): void {
-    this.onEditClick.emit();
+  public HandleEditIconClick(id: number): void {
+    this.onEditClick.emit(id);
   }
 
   public HandleDeleteIconClick(id: number): void {
