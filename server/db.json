@@ -1,5 +1,230 @@
 {
-  "properties": [],
-  "contacts": [],
+  "properties": [
+    {
+      "id": "1",
+      "description": "Wunderschönes Landhaus",
+      "address": "Königsallee 29, 70173 Stuttgart",
+      "sizeInSqm": "156",
+      "value": "430.705"
+    },
+    {
+      "id": "2",
+      "description": "Wunderschönes Landhaus",
+      "address": "Rathausplatz 19, 93047 Regensburg",
+      "sizeInSqm": "116",
+      "value": "350.238"
+    },
+    {
+      "id": "3",
+      "description": "Luxuriöses Penthouse",
+      "address": "Marktplatz 12, 90403 Nürnberg",
+      "sizeInSqm": "104",
+      "value": "577.206"
+    },
+    {
+      "id": "4",
+      "description": "Historische Altbauwohnung",
+      "address": "Brückenweg 14, 97070 Würzburg",
+      "sizeInSqm": "38",
+      "value": "976.565"
+    },
+    {
+      "id": "5",
+      "description": "Doppelhaushälfte mit Garten",
+      "address": "Burgstraße 2, 39104 Magdeburg",
+      "sizeInSqm": "108",
+      "value": "284.810"
+    },
+    {
+      "id": "6",
+      "description": "Altbau mit Stuck",
+      "address": "Wiesenweg 5, 49074 Osnabrück",
+      "sizeInSqm": "77",
+      "value": "127.824"
+    },
+    {
+      "id": "7",
+      "description": "Moderne Loftwohnung",
+      "address": "Seestraße 15, 89073 Ulm",
+      "sizeInSqm": "33",
+      "value": "853.550"
+    },
+    {
+      "id": "9",
+      "description": "Ruhige Gartenwohnung",
+      "address": "Bachstraße 20, 14467 Potsdam",
+      "sizeInSqm": "150",
+      "value": "419.155"
+    },
+    {
+      "id": "10",
+      "description": "Erdgeschosswohnung mit Terrasse",
+      "address": "Wiesenweg 5, 49074 Osnabrück",
+      "sizeInSqm": "127",
+      "value": "235.052"
+    },
+    {
+      "id": "11",
+      "description": "Doppelhaushälfte mit Garten",
+      "address": "Hafenstraße 10, 28195 Bremen",
+      "sizeInSqm": "129",
+      "value": "773.274"
+    },
+    {
+      "id": "12",
+      "description": "Historische Altbauwohnung",
+      "address": "Schillerweg 11, 18055 Rostock",
+      "sizeInSqm": "141",
+      "value": "676.294"
+    },
+    {
+      "id": "13",
+      "description": "Moderne Dachgeschosswohnung",
+      "address": "Wiesenweg 5, 49074 Osnabrück",
+      "sizeInSqm": "33",
+      "value": "846.239"
+    },
+    {
+      "id": "14",
+      "description": "Charmantes Einfamilienhaus",
+      "address": "Burgstraße 2, 39104 Magdeburg",
+      "sizeInSqm": "127",
+      "value": "790.517"
+    },
+    {
+      "id": "15",
+      "description": "Doppelhaushälfte mit Garten",
+      "address": "Marktplatz 12, 90403 Nürnberg",
+      "sizeInSqm": "101",
+      "value": "643.370"
+    },
+    {
+      "id": "16",
+      "description": "Moderne Dachgeschosswohnung",
+      "address": "Schulweg 7, 80331 München",
+      "sizeInSqm": "96",
+      "value": "472.782"
+    },
+    {
+      "id": "17",
+      "description": "Geräumige Stadtvilla",
+      "address": "Schulweg 7, 80331 München",
+      "sizeInSqm": "136",
+      "value": "137.242"
+    },
+    {
+      "id": "18",
+      "description": "Doppelhaushälfte mit Garten",
+      "address": "Hauptstraße 23, 20095 Hamburg",
+      "sizeInSqm": "127",
+      "value": "211.950"
+    },
+    {
+      "id": "19",
+      "description": "Ruhige Gartenwohnung",
+      "address": "Marktplatz 12, 90403 Nürnberg",
+      "sizeInSqm": "124",
+      "value": "913.260"
+    },
+    {
+      "id": "20",
+      "description": "Erdgeschosswohnung mit Terrasse",
+      "address": "Schillerweg 11, 18055 Rostock",
+      "sizeInSqm": "51",
+      "value": "422.436"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "1",
+      "name": "Lukas Müller",
+      "number": "+49 152 34567870",
+      "address": "Berliner Straße 12, 10115 Berlin"
+    },
+    {
+      "id": "2",
+      "name": "Hannah Schmidt",
+      "number": "+49 157 12345678",
+      "address": "Goethestraße 45, 60313 Frankfurt am Main"
+    },
+    {
+      "id": "3",
+      "name": "Maximilian Weber",
+      "number": "+49 160 98765432",
+      "address": "Königsallee 1, 40212 Düsseldorf"
+    },
+    {
+      "id": "4",
+      "name": "Sophie Bauer",
+      "number": "+49 151 23456789",
+      "address": "Lange Straße 7, 70174 Stuttgart"
+    },
+    {
+      "id": "5",
+      "name": "Felix Fischer",
+      "number": "+49 176 56789012",
+      "address": "Hauptstraße 98, 50667 Köln"
+    },
+    {
+      "id": "6",
+      "name": "Marie Wagner",
+      "number": "+49 172 34561234",
+      "address": "Bahnhofstraße 23, 80331 München"
+    },
+    {
+      "id": "7",
+      "name": "Leon Schäfer",
+      "number": "+49 163 67890123",
+      "address": "Marktplatz 5, 20095 Hamburg"
+    },
+    {
+      "name": "Emily Hofmann",
+      "number": "+49 159 45678901",
+      "address": "Poststraße 3, 04109 Leipzig",
+      "id": "919c"
+    },
+    {
+      "name": "Jonas Becker",
+      "number": "+49 174 12309876",
+      "address": "Ringstraße 11, 90403 Nürnberg",
+      "id": "134e"
+    },
+    {
+      "name": "Laura Meier",
+      "number": "+49 157 09876543",
+      "address": "Schillerstraße 2, 68161 Mannheim",
+      "id": "3eba"
+    },
+    {
+      "name": "Paul Richter",
+      "number": "+49 152 56789034",
+      "address": "Lindenstraße 20, 99084 Erfurt",
+      "id": "1f48"
+    },
+    {
+      "name": "Lisa Krüger",
+      "number": "+49 162 45612378",
+      "address": "Friedrichstraße 8, 01067 Dresden",
+      "id": "1602"
+    },
+    {
+      "name": "Tom Lehmann",
+      "number": "+49 173 78901234",
+      "address": "Rathausplatz 10, 89073 Ulm",
+      "id": "d3d3"
+    },
+    {
+      "name": "Clara Wolf",
+      "number": "+49 158 34567890",
+      "address": "Kirchstraße 6, 28203 Bremen",
+      "id": "6eee"
+    },
+    {
+      "name": "Jan Köhler",
+      "number": "+49 175 67890123",
+      "address": "Bismarckstraße 22, 52062 Aachen",
+      "id": "9739"
+    }
+  ],
   "relationships": []
 }

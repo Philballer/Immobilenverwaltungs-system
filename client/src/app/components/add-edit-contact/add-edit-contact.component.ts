@@ -56,7 +56,7 @@ export class AddEditContactComponent {
 
   public handleCancelClick(): void {
     this.dialogRef.close({
-      cancle: true,
+      cancel: true,
     });
   }
 

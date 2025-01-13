@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GoogleAddressService {
-  private URL = `https://maps.googleapis.com/maps/api/js?key=${process.env['API_KEY']}&libraries=places`;
+  private autocomplete: google.maps.places.Autocomplete | undefined;
 
-  constructor(private http: HttpClient) {}
+  public initializeAutocomplete(input: HTMLInputElement): void {
+    console.log('the input', input);
+
+    this.autocomplete = new google.maps.places.Autocomplete(input, {
+      types: ['address'],
+      componentRestrictions: { country: 'de' },
+    });
+
+    this.autocomplete.addListener('place_changed', () => {
+      const place = this.autocomplete?.getPlace();
+      console.log('place', place);
+    });
+  }
 }
