@@ -7,6 +7,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -40,6 +41,8 @@ export class DatatableComponent<T> implements OnInit, AfterViewInit {
   @Output()
   public onDeleteClick = new EventEmitter<number>();
 
+  constructor(private router: Router) {}
+
   public ngOnInit(): void {
     this.dataSource = new MatTableDataSource<T>(this.data);
   }
@@ -56,5 +59,7 @@ export class DatatableComponent<T> implements OnInit, AfterViewInit {
     this.onDeleteClick.emit(id);
   }
 
-  public handleTableClick(id: number): void {}
+  public handleTableClick(id: number): void {
+    this.router.navigate(['/contact', id]);
+  }
 }

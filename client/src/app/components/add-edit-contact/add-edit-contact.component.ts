@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { IContact } from '../../types/main-types';
 import { CommonModule } from '@angular/common';
+import { formatToGermanMobileNumber } from '../../helpers/format-number';
 
 @Component({
   selector: 'app-add-edit-contact',
@@ -61,7 +62,10 @@ export class AddEditContactComponent {
 
   public handleSaveClick(): void {
     this.dialogRef.close({
-      contact: this.formData,
+      contact: {
+        ...this.formData,
+        number: formatToGermanMobileNumber(this.formData.number),
+      },
       isEdited: this.isEdit,
     });
   }

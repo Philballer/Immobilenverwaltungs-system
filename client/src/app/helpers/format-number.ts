@@ -1,4 +1,4 @@
-function formatToGermanMobileNumber(number: string): string {
+export function formatToGermanMobileNumber(number: string): string {
   const cleanedNumber = number.replace(/\D/g, '');
 
   if (
@@ -11,10 +11,5 @@ function formatToGermanMobileNumber(number: string): string {
 
   const internationalNumber = '+49' + cleanedNumber.slice(1);
 
-  return internationalNumber.replace(
-    /(\+49)(\d{3})(\d{3})(\d{2})(\d{2})/,
-    '$1 $2 $3 $4 $5'
-  );
-
-  return number;
+  return internationalNumber.replace(/(\+49)(\d{3})(\d+)/, '$1 $2 $3');
 }
