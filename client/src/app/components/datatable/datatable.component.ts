@@ -26,6 +26,9 @@ export class DatatableComponent<T> implements OnInit, AfterViewInit {
   @Input()
   public displayedColumns?: string[] = [];
 
+  @Input()
+  public isContactDatatable: boolean = false;
+
   public dataSource: any;
 
   @ViewChild(MatPaginator)
@@ -45,11 +48,13 @@ export class DatatableComponent<T> implements OnInit, AfterViewInit {
     if (this.paginator) this.dataSource.paginator = this.paginator;
   }
 
-  public HandleEditIconClick(id: number): void {
+  public handleEditIconClick(id: number): void {
     this.onEditClick.emit(id);
   }
 
-  public HandleDeleteIconClick(id: number): void {
+  public handleDeleteIconClick(id: number): void {
     this.onDeleteClick.emit(id);
   }
+
+  public handleTableClick(id: number): void {}
 }

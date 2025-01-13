@@ -1,1 +1,16 @@
-<p>contacts works!</p>
+<div class="px-9">
+  <app-add-button
+    (buttonClick)="openAddDialogue()"
+    buttonName="Kontakte hinzufügen"
+  ></app-add-button>
+
+  <div *ngIf="contacts$ | async as contactsData" class="mt-9">
+    <app-datatable
+      [data]="contactsData"
+      [isContactDatatable]="true"
+      [displayedColumns]="['name', 'address', 'number', 'actions']"
+      (onDeleteClick)="handleContactDelete($event)"
+      (onEditClick)="handleContactEdit($event)"
+    ></app-datatable>
+  </div>
+</div>

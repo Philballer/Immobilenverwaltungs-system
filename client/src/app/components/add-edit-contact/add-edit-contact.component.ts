@@ -10,59 +10,58 @@ import {
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { IProperty } from '../../types/main-types';
+import { IContact } from '../../types/main-types';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-add-edit-dialogue',
+  selector: 'app-add-edit-contact',
   standalone: true,
   imports: [
     CommonModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogTitle,
     MatDialogContent,
+    MatDialogTitle,
     MatDialogActions,
     MatIconModule,
   ],
-  templateUrl: './add-edit-dialogue.component.html',
-  styleUrl: './add-edit-dialogue.component.scss',
+  templateUrl: './add-edit-contact.component.html',
+  styleUrl: './add-edit-contact.component.scss',
 })
-export class AddEditDialogueComponent {
-  public formData: IProperty = {
-    description: '',
+export class AddEditContactComponent {
+  public formData: IContact = {
+    name: '',
+    number: '',
     address: '',
-    value: '',
-    sizeInSqm: '',
   };
 
   public isEdit: boolean = false;
 
-  private readonly dialogRef = inject(MatDialogRef<AddEditDialogueComponent>);
+  private readonly dialogRef = inject(MatDialogRef<AddEditContactComponent>);
 
   private readonly editData = inject(MAT_DIALOG_DATA);
 
   constructor() {
-    const { property, isEdit } = this.editData;
+    const { contact, isEdit } = this.editData;
 
     this.isEdit = isEdit;
-    if (property) {
-      this.formData = { ...property };
+    if (contact) {
+      this.formData = { ...contact };
     }
   }
 
   public handleCancelClick(): void {
     this.dialogRef.close({
-      cancel: true,
+      cancle: true,
     });
   }
 
-  public handSaveClick(): void {
+  public handleSaveClick(): void {
     this.dialogRef.close({
-      property: this.formData,
+      contact: this.formData,
       isEdited: this.isEdit,
     });
   }

@@ -7,10 +7,20 @@ export type IProperty = {
 };
 
 export type IContact = {
-  id: number;
   name: string;
   number: string;
-  role: ContractType;
+  address: string;
+  ownedProperties?: string[];
+  id?: number;
+  role?: ContractType;
+};
+
+export type IRelationship = {
+  person: IContact;
+  property: IProperty;
+  contract: ContractType;
+  startDate: string;
+  endDate: string;
 };
 
 export enum ContractType {

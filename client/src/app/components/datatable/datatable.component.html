@@ -3,11 +3,18 @@
     <!-- Position Column -->
 
     <!-- Name Column -->
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef>Beschreibung</th>
+    <ng-container
+      matColumnDef="{{ isContactDatatable ? 'name' : 'description' }}"
+    >
+      <th mat-header-cell *matHeaderCellDef>
+        {{ isContactDatatable ? "Name" : " Beschreibung" }}
+      </th>
       <td mat-cell *matCellDef="let element">
-        <span>
-          {{ element.description }}
+        <span
+          [class.pointer]="isContactDatatable"
+          (click)="isContactDatatable && handleTableClick(element.id)"
+        >
+          {{ isContactDatatable ? element.name : element.description }}
         </span>
       </td>
     </ng-container>
@@ -16,17 +23,25 @@
     <ng-container matColumnDef="address">
       <th mat-header-cell *matHeaderCellDef>Addresse</th>
       <td mat-cell *matCellDef="let element">
-        <span>
+        <span
+          [class.pointer]="isContactDatatable"
+          (click)="isContactDatatable && handleTableClick(element.id)"
+        >
           {{ element.address }}
         </span>
       </td>
     </ng-container>
 
     <!-- Symbol Column -->
-    <ng-container matColumnDef="size">
-      <th mat-header-cell *matHeaderCellDef>Größe</th>
+    <ng-container matColumnDef="{{ isContactDatatable ? 'number' : 'size' }}">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ isContactDatatable ? "Nummer" : "Größe" }}
+      </th>
       <td mat-cell *matCellDef="let element">
-        <span class=""> {{ element.sizeInSqm }} m² </span>
+        <span class="">
+          {{ isContactDatatable ? element.number : element.sizeInSqm }}
+          {{ !isContactDatatable ? "m²" : "" }}
+        </span>
       </td>
     </ng-container>
 
@@ -40,12 +55,12 @@
       <td mat-cell *matCellDef="let element">
         <div class="flex justiy-between">
           <app-base-icon
-            (onClick)="HandleEditIconClick(element.id)"
+            (onClick)="handleEditIconClick(element.id)"
             iconClass="fa-solid fa-pen-to-square text-blue-900 text-lg"
             toolTip="Eine Immobilie bearbeiten"
           ></app-base-icon>
           <app-base-icon
-            (onClick)="HandleDeleteIconClick(element.id)"
+            (onClick)="handleDeleteIconClick(element.id)"
             iconClass="fa fa-solid fa-trash text-red-600 text-md"
             toolTip="Eine Immobilie löschen"
           ></app-base-icon>

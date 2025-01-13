@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Kontakt hinzufügen Formular</h2>
+<mat-dialog-content>
+  <div class="dialog-body h-96">
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>Beschreibung</mat-label>
+      <input
+        [(ngModel)]="formData.name"
+        matInput
+        placeholder="Maximillian Ludwiger"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>Addresse</mat-label>
+      <input
+        [(ngModel)]="formData.address"
+        matInput
+        placeholder="Bismarckstr 20, 45147 Essen"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>Handynummer</mat-label>
+      <input [(ngModel)]="formData.number" matInput placeholder="01662305456" />
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="px-9 py-5 flex w-full justify-between">
+    <button
+      (click)="handleCancelClick()"
+      class="bg-red-700 hover:bg-red-800 text-white font-medium py-3 px-6 rounded-sm text-lg tracking-wide w-full lg:w-1/3"
+    >
+      Cancel
+    </button>
+
+    <button
+      (click)="handleSaveClick()"
+      class="bg-green-700 hover:bg-green-800 text-white font-medium py-3 px-6 rounded-sm text-lg tracking-wide w-full lg:w-1/3"
+    >
+      {{ isEdit ? "Update" : "Save" }}
+    </button>
+  </div>
+</mat-dialog-actions>
