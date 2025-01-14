@@ -31,23 +31,16 @@ export class GoogleAutcompleteAddressSearchbarComponent
   @Output()
   public onAddressChange = new EventEmitter<string>();
 
-  private address: string = '';
-
   constructor(private _googleService: GoogleAddressService) {}
 
   ngOnInit(): void {
     this._googleService.address.subscribe((data: string) => {
-      this.address = data;
+      console.log('data changed', data);
+      this.onAddressChange.emit(data);
     });
   }
 
   public ngAfterViewInit(): void {
     this._googleService.initializeAutocomplete(this.searchInput.nativeElement);
-  }
-
-  public addressSelected(): void {
-    console.log('google', this.address);
-
-    this.onAddressChange.emit(this.address);
   }
 }
