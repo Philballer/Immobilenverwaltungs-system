@@ -17,7 +17,6 @@ import {
 } from '../../components/date-picker/date-picker.component';
 import { ErrorMessageFormComponent } from '../../components/error-message-form/error-message-form.component';
 import { AddButtonComponent } from '../../components/add-button/add-button.component';
-import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-relationships',
@@ -46,6 +45,8 @@ export class RelationshipsComponent implements OnInit {
   public showServices: boolean = false;
 
   public disableDateRange: boolean = false;
+
+  public isTenancyConflict: boolean = false;
 
   public roles: ContractType[] = [
     ContractType.LANDLORD,
@@ -93,6 +94,7 @@ export class RelationshipsComponent implements OnInit {
   }
 
   public handleRoleSelected(isService: { name: string; value: boolean }): void {
+    this.isTenancyConflict = false;
     if (isService.name === ContractType.SERVICE && isService.value) {
       this.showServices = true;
       this.relationshipForm.contract = ContractType.SERVICE;
@@ -113,11 +115,13 @@ export class RelationshipsComponent implements OnInit {
   }
 
   public handleDateRangePicked(range: IDateRange): void {
+    this.checkTenancyConflict(range);
     this.relationshipForm.startDate = range.startDate;
     this.relationshipForm.endDate = range.endDate;
   }
 
   public handleContactPicked(index: number): void {
+    this.isTenancyConflict = false;
     this.activeContact = this.contacts[index];
     const contactId = this.contacts[index].id?.toString();
     if (contactId) {
@@ -130,6 +134,38 @@ export class RelationshipsComponent implements OnInit {
     console.log(propertyId);
     if (propertyId) {
       this.relationshipForm.propertyId = propertyId;
+    }
+  }
+
+  public checkTenancyConflict(range: IDateRange): void {
+    if (!this.activeContact || !this.activeContact.relatedProperties) {
+      return;
+    }
+
+    const newStartDate = new Date(range.startDate).getTime();
+    const newEndDate = new Date(range.endDate).getTime();
+
+    if (this.activeContact.relatedProperties) {
+      for (const property of this.activeContact.relatedProperties) {
+        if (property.contract === ContractType.TENANT) {
+          const existingStartDate = new Date(property.startDate).getTime();
+          const existingEndDate = new Date(property.endDate).getTime();
+
+          const overlap =
+            (newStartDate <= existingEndDate &&
+              newStartDate >= existingStartDate) ||
+            (newEndDate >= existingStartDate &&
+              newEndDate <= existingEndDate) ||
+            (newStartDate <= existingStartDate &&
+              newEndDate >= existingEndDate);
+
+          if (overlap) {
+            this.isTenancyConflict = true;
+          } else {
+            this.isTenancyConflict = false;
+          }
+        }
+      }
     }
   }
 

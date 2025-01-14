@@ -22,6 +22,7 @@
     <app-date-picker
       [disable]="disableDateRange"
       (dateRangeChange)="handleDateRangePicked($event)"
+      [showError]="isTenancyConflict"
     ></app-date-picker>
   </div>
 

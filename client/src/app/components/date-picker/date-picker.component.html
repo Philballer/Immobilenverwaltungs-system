@@ -14,7 +14,10 @@
       (ngModelChange)="handleDateChange()"
     />
   </mat-date-range-input>
-  <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+
+  <mat-hint *ngIf="showError" class="text-red-600 text-sm">
+    Zeitraum schon verbucht !!!</mat-hint
+  >
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-date-range-picker #picker></mat-date-range-picker>
 </mat-form-field>

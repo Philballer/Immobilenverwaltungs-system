@@ -29,6 +29,9 @@ export class DatePickerComponent {
   @Input()
   public disable: boolean = false;
 
+  @Input()
+  public showError: boolean = false;
+
   @Output()
   public dateRangeChange = new EventEmitter<IDateRange>();
 
