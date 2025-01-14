@@ -15,6 +15,9 @@ export class AddButtonComponent {
   @Input()
   public isNormal? = false;
 
+  @Input()
+  public buttonDisabled? = false;
+
   @Output()
   public buttonClick = new EventEmitter<void>();
 

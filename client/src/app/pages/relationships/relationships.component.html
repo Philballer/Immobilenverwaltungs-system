@@ -37,8 +37,11 @@
       (buttonClick)="handleConfirmClick()"
       buttonName="Bestätigen"
       [isNormal]="true"
+      [buttonDisabled]="
+        (showServices && !relationshipForm.service) ||
+        relationshipForm.personId === '' ||
+        relationshipForm.propertyId === ''
+      "
     ></app-add-button>
   </div>
 </div>
-
-<button (click)="checkForm()">Check</button>

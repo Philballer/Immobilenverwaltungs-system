@@ -134,7 +134,6 @@ export class RelationshipsComponent implements OnInit {
   }
 
   public handleConfirmClick(): void {
-    console.log('active', this.activeContact);
     let contact = this.activeContact;
     const { personId, ...form } = this.relationshipForm;
 
@@ -166,11 +165,6 @@ export class RelationshipsComponent implements OnInit {
             .subscribe();
         }
       }
-      console.log('contact', contact);
     }
-  }
-
-  public checkForm(): void {
-    console.log(this.relationshipForm);
   }
 }
