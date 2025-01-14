@@ -5,12 +5,14 @@
       [options]="getContactNames(contacts)"
       [width]="144"
       (onInputSelect)="handleContactPicked($event)"
+      [reset]="resetValues"
     ></app-dropdown-select>
     <app-dropdown-select
       label="Immobilien"
       [options]="getPropertyAdresses(properties)"
       [width]="145"
       (onInputSelect)="handlePropertyPicked($event)"
+      [reset]="resetValues"
     ></app-dropdown-select>
     <app-dropdown-select
       label="Verhältnis"
@@ -18,11 +20,13 @@
       [options]="roles"
       [isRole]="true"
       (roleSelected)="handleRoleSelected($event)"
+      [reset]="resetValues"
     ></app-dropdown-select>
     <app-date-picker
       [disable]="disableDateRange"
       (dateRangeChange)="handleDateRangePicked($event)"
       [showError]="isTenancyConflict"
+      [reset]="resetValues"
     ></app-date-picker>
   </div>
 
@@ -41,7 +45,8 @@
       [buttonDisabled]="
         (showServices && !relationshipForm.service) ||
         relationshipForm.personId === '' ||
-        relationshipForm.propertyId === ''
+        relationshipForm.propertyId === '' ||
+        isTenancyConflict
       "
     ></app-add-button>
   </div>

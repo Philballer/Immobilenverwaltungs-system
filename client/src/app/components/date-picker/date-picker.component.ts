@@ -5,6 +5,8 @@ import {
   Output,
   EventEmitter,
   Input,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -23,7 +25,7 @@ export type IDateRange = { startDate: string; endDate: string };
   templateUrl: './date-picker.component.html',
   styleUrl: './date-picker.component.scss',
 })
-export class DatePickerComponent {
+export class DatePickerComponent implements OnChanges {
   public dateRange: IDateRange = {} as IDateRange;
 
   @Input()
@@ -32,8 +34,18 @@ export class DatePickerComponent {
   @Input()
   public showError: boolean = false;
 
+  @Input()
+  public reset: boolean = false;
+
   @Output()
   public dateRangeChange = new EventEmitter<IDateRange>();
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes['reset'] && changes['reset'].currentValue) {
+      this.dateRange.startDate = '';
+      this.dateRange.endDate = '';
+    }
+  }
 
   public handleDateChange(): void {
     if (this.dateRange.startDate && this.dateRange.endDate) {

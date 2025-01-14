@@ -7,6 +7,8 @@ import {
   EventEmitter,
   OnInit,
   OnDestroy,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -29,7 +31,7 @@ import { ContractType } from '../../types/main-types';
   templateUrl: './dropdown-select.component.html',
   styleUrl: './dropdown-select.component.scss',
 })
-export class DropdownSelectComponent implements OnInit, OnDestroy {
+export class DropdownSelectComponent implements OnInit, OnDestroy, OnChanges {
   @ViewChild('input')
   public input!: ElementRef<HTMLInputElement>;
 
@@ -47,6 +49,9 @@ export class DropdownSelectComponent implements OnInit, OnDestroy {
 
   @Input()
   public isRole: boolean = false;
+
+  @Input()
+  public reset: boolean = false;
 
   @Output()
   public onInputSelect = new EventEmitter<number>();
@@ -78,6 +83,12 @@ export class DropdownSelectComponent implements OnInit, OnDestroy {
 
       if (value) this.onInputSelect.emit(this.options.indexOf(value));
     });
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes['reset'] && changes['reset'].currentValue) {
+      this.inputControl.reset();
+    }
   }
 
   public filter(): void {

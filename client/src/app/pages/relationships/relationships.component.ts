@@ -48,6 +48,8 @@ export class RelationshipsComponent implements OnInit {
 
   public isTenancyConflict: boolean = false;
 
+  public resetValues: boolean = false;
+
   public roles: ContractType[] = [
     ContractType.LANDLORD,
     ContractType.TENANT,
@@ -131,7 +133,6 @@ export class RelationshipsComponent implements OnInit {
 
   public handlePropertyPicked(index: number): void {
     const propertyId = this.properties[index].id?.toString();
-    console.log(propertyId);
     if (propertyId) {
       this.relationshipForm.propertyId = propertyId;
     }
@@ -191,6 +192,7 @@ export class RelationshipsComponent implements OnInit {
         this._contactService
           .updateContact(contact, contact.id?.toLocaleString())
           .subscribe();
+        this.reset();
       }
     } else {
       if (contact) {
@@ -199,8 +201,13 @@ export class RelationshipsComponent implements OnInit {
           this._contactService
             .updateContact(contact, contact.id?.toLocaleString())
             .subscribe();
+          this.reset();
         }
       }
     }
+  }
+
+  public reset(): void {
+    this.resetValues = true;
   }
 }
