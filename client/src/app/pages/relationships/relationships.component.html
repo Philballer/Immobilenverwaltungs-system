@@ -1,1 +1,44 @@
-<p>relationships works!</p>
+<div class="px-9">
+  <div class="flex justify-between py-5">
+    <app-dropdown-select
+      label="Kontakte"
+      [options]="getContactNames(contacts)"
+      [width]="144"
+      (onInputSelect)="handleContactPicked($event)"
+    ></app-dropdown-select>
+    <app-dropdown-select
+      label="Immobilien"
+      [options]="getPropertyAdresses(properties)"
+      [width]="145"
+      (onInputSelect)="handlePropertyPicked($event)"
+    ></app-dropdown-select>
+    <app-dropdown-select
+      label="Verhältnis"
+      [width]="144"
+      [options]="roles"
+      [isRole]="true"
+      (roleSelected)="handleRoleSelected($event)"
+    ></app-dropdown-select>
+    <app-date-picker
+      [disable]="disableDateRange"
+      (dateRangeChange)="handleDateRangePicked($event)"
+    ></app-date-picker>
+  </div>
+
+  <app-error-message-form
+    [options]="services"
+    [width]="100"
+    label=" Dienstleistung"
+    [show]="showServices"
+    (onInputSelect)="handleServiceSelected($event)"
+  ></app-error-message-form>
+  <div class="mt-4">
+    <app-add-button
+      (buttonClick)="handleConfirmClick()"
+      buttonName="Bestätigen"
+      [isNormal]="true"
+    ></app-add-button>
+  </div>
+</div>
+
+<button (click)="checkForm()">Check</button>

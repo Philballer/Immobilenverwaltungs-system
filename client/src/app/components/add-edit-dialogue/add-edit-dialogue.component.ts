@@ -71,7 +71,6 @@ export class AddEditDialogueComponent {
   }
 
   public handleAddressSelected(address: string): void {
-    console.log('address clicked immo', address);
     this.formData.address = address;
   }
 }

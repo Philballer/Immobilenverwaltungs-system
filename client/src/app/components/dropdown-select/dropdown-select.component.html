@@ -1,0 +1,20 @@
+<form>
+  <mat-form-field appearance="fill" [style.width.%]="width">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      #input
+      type="text"
+      [placeholder]="placeholder"
+      matInput
+      [formControl]="inputControl"
+      [matAutocomplete]="auto"
+      (input)="filter()"
+      (focus)="filter()"
+    />
+    <mat-autocomplete requireSelection #auto="matAutocomplete">
+      @for (option of filteredOptions; track option) {
+      <mat-option [value]="option">{{ option }}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

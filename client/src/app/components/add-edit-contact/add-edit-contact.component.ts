@@ -73,8 +73,6 @@ export class AddEditContactComponent {
   }
 
   public handleAddressChange(address: string): void {
-    console.log('address clicked kont', address);
-
     this.formData.address = address;
   }
 }

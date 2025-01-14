@@ -10,21 +10,28 @@ export type IContact = {
   name: string;
   number: string;
   address: string;
-  ownedProperties?: string[];
   id?: number;
-  role?: ContractType;
+  relatedProperties?: IRelationship[];
 };
 
 export type IRelationship = {
-  person: IContact;
-  property: IProperty;
-  contract: ContractType;
+  propertyId: string;
   startDate: string;
   endDate: string;
+  personId?: string;
+  contract?: ContractType | string;
+  service?: ServiceType | string;
 };
 
 export enum ContractType {
-  LANDLORD,
-  TENANT,
-  SERVICE,
+  LANDLORD = 'Eigentümer',
+  TENANT = 'Mieter',
+  SERVICE = 'Dienstleiter',
+}
+
+export enum ServiceType {
+  PLUMBER = 'Installateur',
+  HANDYMAN = 'Handwerker',
+  ELECTRICIAN = 'Elektriker',
+  PAINTER = 'Maler',
 }

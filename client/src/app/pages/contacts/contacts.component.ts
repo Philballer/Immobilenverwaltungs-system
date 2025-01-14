@@ -42,7 +42,7 @@ export class ContactsComponent implements OnInit {
           if (data.cancel) return;
 
           if (data.contact && !isEdit) {
-            this._contactService.createProperty(data.contact).subscribe({
+            this._contactService.createContact(data.contact).subscribe({
               next: () => {
                 setTimeout(() => {
                   this.loadContacts();
@@ -54,7 +54,7 @@ export class ContactsComponent implements OnInit {
 
           if (data.contact.id && isEdit) {
             this._contactService
-              .updateProperty(data.contact, data.contact.id?.toString())
+              .updateContact(data.contact, data.contact.id?.toString())
               .subscribe({
                 next: () => {
                   setTimeout(() => {
@@ -69,17 +69,17 @@ export class ContactsComponent implements OnInit {
   }
 
   public loadContacts(): void {
-    this.contacts$ = this._contactService.getAllProperties();
+    this.contacts$ = this._contactService.getAllContacts();
   }
 
   public handleContactDelete(id: number): void {
-    this._contactService.deleteOneProperty(id.toString()).subscribe();
+    this._contactService.deleteOneContact(id.toString()).subscribe();
     setTimeout(() => {
       this.loadContacts();
     }, 500);
   }
   public handleContactEdit(id: number): void {
-    this._contactService.getOneProperty(id.toString()).subscribe((data) => {
+    this._contactService.getOneContact(id.toString()).subscribe((data) => {
       this.openAddDialogue(true, data);
     });
   }

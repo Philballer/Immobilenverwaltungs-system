@@ -35,7 +35,6 @@ export class GoogleAutcompleteAddressSearchbarComponent
 
   ngOnInit(): void {
     this._googleService.address.subscribe((data: string) => {
-      console.log('data changed', data);
       this.onAddressChange.emit(data);
     });
   }
