@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { IContact } from '../../types/main-types';
 import { CommonModule } from '@angular/common';
 import { formatToGermanMobileNumber } from '../../helpers/format-number';
+import { GoogleAutcompleteAddressSearchbarComponent } from '../google-autcomplete-address-searchbar/google-autcomplete-address-searchbar.component';
 
 @Component({
   selector: 'app-add-edit-contact',
@@ -28,6 +29,7 @@ import { formatToGermanMobileNumber } from '../../helpers/format-number';
     MatDialogTitle,
     MatDialogActions,
     MatIconModule,
+    GoogleAutcompleteAddressSearchbarComponent,
   ],
   templateUrl: './add-edit-contact.component.html',
   styleUrl: './add-edit-contact.component.scss',
@@ -68,5 +70,11 @@ export class AddEditContactComponent {
       },
       isEdited: this.isEdit,
     });
+  }
+
+  public handleAddressChange(address: string): void {
+    console.log('address clicked kont', address);
+
+    this.formData.address = address;
   }
 }

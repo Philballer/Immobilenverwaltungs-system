@@ -13,3 +13,10 @@ export function formatToGermanMobileNumber(number: string): string {
 
   return internationalNumber.replace(/(\+49)(\d{3})(\d+)/, '$1 $2 $3');
 }
+
+export function formatNumber(num: string): string {
+  const newNum = parseInt(num);
+  const formattedNumber = newNum / 1000;
+
+  return formattedNumber.toFixed(3);
+}

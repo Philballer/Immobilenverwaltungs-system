@@ -10,14 +10,9 @@
       />
     </mat-form-field>
 
-    <mat-form-field appearance="fill" style="width: 100%">
-      <mat-label>Addresse</mat-label>
-      <input
-        [(ngModel)]="formData.address"
-        matInput
-        placeholder="Bismarckstr 20, 45147 Essen"
-      />
-    </mat-form-field>
+    <app-google-autcomplete-address-searchbar
+      (onAddressChange)="handleAddressChange($event)"
+    ></app-google-autcomplete-address-searchbar>
 
     <mat-form-field appearance="fill" style="width: 100%">
       <mat-label>Handynummer</mat-label>

@@ -2,9 +2,8 @@
   <mat-label>Addresse</mat-label>
   <input
     #searchInput
-    [(ngModel)]="searchValue"
-    (ngModelChange)="onSearchValueChange($event)"
+    (change)="addressSelected()"
     matInput
-    placeholder="Bismarckstr 20, 45147 Essen"
+    placeholder="Bismarckstr 20"
   />
 </mat-form-field>

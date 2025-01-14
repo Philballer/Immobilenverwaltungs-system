@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 export class GoogleAddressService {
   private autocomplete: google.maps.places.Autocomplete | undefined;
 
-  public initializeAutocomplete(input: HTMLInputElement): void {
-    console.log('the input', input);
+  public address = new EventEmitter<string>();
 
+  public initializeAutocomplete(input: HTMLInputElement): void {
     this.autocomplete = new google.maps.places.Autocomplete(input, {
       types: ['address'],
       componentRestrictions: { country: 'de' },
@@ -16,7 +16,7 @@ export class GoogleAddressService {
 
     this.autocomplete.addListener('place_changed', () => {
       const place = this.autocomplete?.getPlace();
-      console.log('place', place);
+      this.address.emit(place?.formatted_address);
     });
   }
 }

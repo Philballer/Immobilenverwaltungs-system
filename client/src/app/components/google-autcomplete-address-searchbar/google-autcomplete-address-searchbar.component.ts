@@ -1,4 +1,13 @@
-import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  AfterViewInit,
+  ElementRef,
+  EventEmitter,
+  Output,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -14,20 +23,31 @@ import { GoogleAddressService } from '../../services/google-address/google-addre
   styleUrl: './google-autcomplete-address-searchbar.component.scss',
 })
 export class GoogleAutcompleteAddressSearchbarComponent
-  implements AfterViewInit
+  implements AfterViewInit, OnInit
 {
   @ViewChild('searchInput')
   public searchInput!: ElementRef;
 
-  public searchValue: string = '';
+  @Output()
+  public onAddressChange = new EventEmitter<string>();
+
+  private address: string = '';
 
   constructor(private _googleService: GoogleAddressService) {}
+
+  ngOnInit(): void {
+    this._googleService.address.subscribe((data: string) => {
+      this.address = data;
+    });
+  }
 
   public ngAfterViewInit(): void {
     this._googleService.initializeAutocomplete(this.searchInput.nativeElement);
   }
 
-  public onSearchValueChange(value: string): void {
-    // console.log(value);
+  public addressSelected(): void {
+    console.log('google', this.address);
+
+    this.onAddressChange.emit(this.address);
   }
 }

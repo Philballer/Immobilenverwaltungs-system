@@ -35,7 +35,7 @@ export class PropertiesComponent implements OnInit, OnDestroy {
 
   public openAddDialogue(isEdit: boolean = false, editData?: IProperty): void {
     const dialogRef = this.dialog.open(AddEditDialogueComponent, {
-      height: '65%',
+      height: '52%',
       minWidth: '50%',
       data: { property: editData || {}, isEdit: isEdit },
     });
