@@ -283,6 +283,18 @@
       "number": "+49 175 67890123",
       "address": "Bismarckstraße 22, 52062 Aachen",
       "id": "9739"
+    },
+    {
+      "id": "7b82",
+      "name": "Caroline Humbert",
+      "address": "Löhberg 2, 45468 Mülheim an der Ruhr, Germany",
+      "number": "+49 163 4510308"
+    },
+    {
+      "id": "e176",
+      "name": "Cynthia Immerman",
+      "address": "Carolabrücke, 01 Dresden-Altstadt, Germany",
+      "number": "+49 163 44103098"
     }
   ]
 }

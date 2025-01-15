@@ -16,12 +16,14 @@ import { SpinnerComponent } from '../../components/spinner/spinner.component';
   styleUrl: './contact-details.component.scss',
 })
 export class ContactDetailsComponent implements OnInit {
-  public contact!: IContact;
-
-  public relatedProperties!: IRelationship[];
+  public contact: IContact = {
+    name: '',
+    number: '',
+    address: '',
+    relatedProperties: [],
+  };
 
   public properties: IProperty[] = [];
-
   public loading = true;
 
   constructor(
@@ -36,36 +38,26 @@ export class ContactDetailsComponent implements OnInit {
     if (contactId) {
       this._contactService.getOneContact(contactId).subscribe((data) => {
         this.contact = data;
-        if (data.relatedProperties) {
-          this.relatedProperties = data.relatedProperties;
-        }
-      });
+        const propertyIds =
+          data.relatedProperties?.map((property) => property.propertyId) || [];
 
-      if (this.relatedProperties.length > 0) {
-        console.log('this function was run');
-
-        const propertyIds = this.relatedProperties?.map(
-          (property) => property.propertyId
-        );
-        if (propertyIds) {
+        if (propertyIds.length > 0) {
           const propertyRequests = propertyIds.map((id) =>
             this._propertyService.getOneProperty(id)
           );
 
           forkJoin(propertyRequests).subscribe((propertiesData) => {
             this.properties = propertiesData;
+            this.loading = false;
           });
+        } else {
+          this.loading = false;
         }
-      }
+      });
     }
   }
 
   public onGoBackClick(): void {
     this.location.back();
-  }
-
-  public logProperties(): void {
-    console.log('properies', this.properties);
-    console.log('related', this.relatedProperties);
   }
 }

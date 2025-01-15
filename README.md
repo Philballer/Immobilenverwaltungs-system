@@ -87,3 +87,7 @@ To run the application, follow these steps:
 - TypeScript: Type definitions and improved development experience.
 
 - RxJS: Reactive programming for handling asynchronous data streams.
+
+## Additional Notes
+
+- Make sure to have both backend and frontend running simultaneously for the application to function correctly.

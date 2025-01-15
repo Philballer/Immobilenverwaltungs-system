@@ -1,4 +1,27 @@
 <div class="px-9">
+  <div class="mb-4">
+    <button
+      (click)="onGoBackClick()"
+      class="flex items-center text-blue-500 hover:text-blue-700"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="h-6 w-6 mr-2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+      Zurück
+    </button>
+  </div>
+
   <div
     *ngIf="contact"
     class="max-w-sm mx-auto bg-white border border-gray-300 rounded-lg shadow-md p-6 h-72"
@@ -24,15 +47,17 @@
   <div *ngIf="contact" class="mt-9 py-5">
     <h2 class="text-xl font-semibold text-gray-900">Verknüpften Immobilien</h2>
 
+    <app-spinner *ngIf="loading"></app-spinner>
+
     <app-datatable
-      *ngIf="properties.length >= relatedProperties.length"
+      *ngIf="!loading && properties.length > 0"
       [data]="properties"
       [pageSize]="5"
       [displayedColumns]="['address', 'description', 'size', 'value']"
     ></app-datatable>
 
-    <p class="text-gray-500">Keine Immobilien gefunden.</p>
+    <p *ngIf="!loading && properties.length === 0" class="text-gray-500">
+      Keine Immobilien gefunden.
+    </p>
   </div>
 </div>
-
-<!-- <button (click)="logProperties()">Log properties</button> -->
