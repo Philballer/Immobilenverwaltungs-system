@@ -28,6 +28,9 @@ export class DatatableComponent<T> implements OnInit, AfterViewInit {
   public displayedColumns?: string[] = [];
 
   @Input()
+  public pageSize: number | undefined;
+
+  @Input()
   public isContactDatatable: boolean = false;
 
   public dataSource: any;

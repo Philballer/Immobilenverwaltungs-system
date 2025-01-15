@@ -1,1 +1,38 @@
-<p>contact-details works!</p>
+<div class="px-9">
+  <div
+    *ngIf="contact"
+    class="max-w-sm mx-auto bg-white border border-gray-300 rounded-lg shadow-md p-6 h-72"
+  >
+    <div class="flex items-center space-x-4 mb-9">
+      <div
+        class="bg-blue-500 text-white font-bold h-12 w-12 flex items-center justify-center rounded-full"
+      >
+        {{ contact.name.charAt(0) }}
+      </div>
+      <div>
+        <h2 class="text-lg font-semibold text-gray-900">{{ contact.name }}</h2>
+        <p class="text-sm text-gray-600">{{ contact.number }}</p>
+      </div>
+    </div>
+    <div class="mt-9">
+      <p class="text-sm text-gray-700">
+        <strong>Addresse:</strong> {{ contact.address }}
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="contact" class="mt-9 py-5">
+    <h2 class="text-xl font-semibold text-gray-900">Verknüpften Immobilien</h2>
+
+    <app-datatable
+      *ngIf="properties.length >= relatedProperties.length"
+      [data]="properties"
+      [pageSize]="5"
+      [displayedColumns]="['address', 'description', 'size', 'value']"
+    ></app-datatable>
+
+    <p class="text-gray-500">Keine Immobilien gefunden.</p>
+  </div>
+</div>
+
+<!-- <button (click)="logProperties()">Log properties</button> -->

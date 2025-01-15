@@ -74,7 +74,7 @@
 
   <mat-paginator
     [pageSizeOptions]="[5, 8, 10, 20]"
-    [pageSize]="8"
+    [pageSize]="pageSize || 8"
     showFirstLastButtons
     aria-label="Select page of periodic elements"
   >
