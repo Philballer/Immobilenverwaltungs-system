@@ -101,7 +101,7 @@
     {
       "id": "16",
       "description": "Moderne Dachgeschosswohnung",
-      "address": "Schulweg 7, 80331 München",
+      "address": "Schulweg 8, 80331 München",
       "sizeInSqm": "96",
       "value": "472.782"
     },
@@ -139,13 +139,47 @@
       "id": "1",
       "name": "Lukas Müller",
       "number": "+49 152 34567870",
-      "address": "Berliner Straße 12, 10115 Berlin"
+      "address": "Berliner Straße 12, 10115 Berlin",
+      "relatedProperties": [
+        {
+          "propertyId": "3",
+          "startDate": "",
+          "endDate": "",
+          "contract": "Eigentümer"
+        },
+        {
+          "propertyId": "1",
+          "startDate": "",
+          "endDate": "",
+          "contract": "Eigentümer"
+        }
+      ]
     },
     {
       "id": "2",
       "name": "Hannah Schmidt",
       "number": "+49 157 12345678",
-      "address": "Goethestraße 45, 60313 Frankfurt am Main"
+      "address": "Goethestraße 45, 60313 Frankfurt am Main",
+      "relatedProperties": [
+        {
+          "propertyId": "2",
+          "startDate": "2025-01-14T23:00:00.000Z",
+          "endDate": "2025-02-27T23:00:00.000Z",
+          "contract": "Mieter"
+        },
+        {
+          "propertyId": "4",
+          "startDate": "2025-03-04T23:00:00.000Z",
+          "endDate": "2025-03-26T23:00:00.000Z",
+          "contract": "Mieter"
+        },
+        {
+          "propertyId": "11",
+          "startDate": "2025-05-13T22:00:00.000Z",
+          "endDate": "2025-05-27T22:00:00.000Z",
+          "contract": "Mieter"
+        }
+      ]
     },
     {
       "id": "3",
@@ -157,19 +191,44 @@
       "id": "4",
       "name": "Sophie Bauer",
       "number": "+49 151 23456789",
-      "address": "Lange Straße 7, 70174 Stuttgart"
+      "address": "Lange Straße 7, 70174 Stuttgart",
+      "relatedProperties": [
+        {
+          "propertyId": "18",
+          "startDate": "2025-01-15T23:00:00.000Z",
+          "endDate": "2025-01-29T23:00:00.000Z",
+          "contract": "Dienstleiter",
+          "service": "Maler"
+        }
+      ]
     },
     {
       "id": "5",
       "name": "Felix Fischer",
       "number": "+49 176 56789012",
-      "address": "Hauptstraße 98, 50667 Köln"
+      "address": "Hauptstraße 98, 50667 Köln",
+      "relatedProperties": [
+        {
+          "propertyId": "16",
+          "startDate": "",
+          "endDate": "",
+          "contract": "Eigentümer"
+        }
+      ]
     },
     {
       "id": "6",
       "name": "Marie Wagner",
       "number": "+49 172 34561234",
-      "address": "Bahnhofstraße 23, 80331 München"
+      "address": "Bahnhofstraße 23, 80331 München",
+      "relatedProperties": [
+        {
+          "propertyId": "12",
+          "startDate": "2025-04-08T22:00:00.000Z",
+          "endDate": "2025-04-23T22:00:00.000Z",
+          "contract": "Mieter"
+        }
+      ]
     },
     {
       "id": "7",
@@ -225,6 +284,5 @@
       "address": "Bismarckstraße 22, 52062 Aachen",
       "id": "9739"
     }
-  ],
-  "relationships": []
+  ]
 }
