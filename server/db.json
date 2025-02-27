@@ -158,8 +158,8 @@
     {
       "id": "2",
       "name": "Hannah Schmidt",
-      "number": "+49 157 12345678",
-      "address": "Goethestraße 45, 60313 Frankfurt am Main",
+      "number": "Invalid number",
+      "address": "Goethestraße 41, 60313 Frankfurt am Main, Germany",
       "relatedProperties": [
         {
           "propertyId": "2",

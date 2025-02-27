@@ -18,5 +18,10 @@ export class GoogleAddressService {
       const place = this.autocomplete?.getPlace();
       this.address.emit(place?.formatted_address);
     });
+
+    input.addEventListener('input', () => {
+      const typedAddress = input.value;
+      if (typedAddress) this.address.emit(typedAddress);
+    });
   }
 }

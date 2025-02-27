@@ -6,7 +6,9 @@ import {
   EventEmitter,
   Output,
   OnInit,
-  OnDestroy,
+  Input,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -23,10 +25,13 @@ import { GoogleAddressService } from '../../services/google-address/google-addre
   styleUrl: './google-autcomplete-address-searchbar.component.scss',
 })
 export class GoogleAutcompleteAddressSearchbarComponent
-  implements AfterViewInit, OnInit
+  implements AfterViewInit, OnInit, OnChanges
 {
   @ViewChild('searchInput')
   public searchInput!: ElementRef;
+
+  @Input()
+  public editData: string | undefined;
 
   @Output()
   public onAddressChange = new EventEmitter<string>();
@@ -41,5 +46,13 @@ export class GoogleAutcompleteAddressSearchbarComponent
 
   public ngAfterViewInit(): void {
     this._googleService.initializeAutocomplete(this.searchInput.nativeElement);
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes['editData'] && changes['editData'].currentValue) {
+      setTimeout(() => {
+        this.searchInput.nativeElement.value = this.editData;
+      }, 250);
+    }
   }
 }

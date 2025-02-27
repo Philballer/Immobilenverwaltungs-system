@@ -6,8 +6,11 @@ import { AddEditContactComponent } from '../../components/add-edit-contact/add-e
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactService } from '../../services/contact-service/contact.service';
-import { Observable, Subscription } from 'rxjs';
+import { filter, Observable, Subscription, switchMap, EMPTY } from 'rxjs';
 import { IContact } from '../../types/main-types';
+
+type IData = { contact: IContact; isEdited: boolean; cancel: boolean };
+
 @Component({
   selector: 'app-contacts',
   standalone: true,
@@ -37,35 +40,25 @@ export class ContactsComponent implements OnInit {
 
     this.dialogSubscription = dialogRef
       .afterClosed()
-      .subscribe(
-        (data: { contact: IContact; isEdited: boolean; cancel: boolean }) => {
-          if (data.cancel) return;
-
+      .pipe(
+        filter((data: IData) => !!data && !data.cancel), // Ignore if canceled
+        switchMap((data: IData) => {
           if (data.contact && !isEdit) {
-            this._contactService.createContact(data.contact).subscribe({
-              next: () => {
-                setTimeout(() => {
-                  this.loadContacts();
-                }, 200);
-              },
-              error: (err) => console.log('Error creating Contact', err),
-            });
+            return this._contactService.createContact(data.contact);
           }
-
           if (data.contact.id && isEdit) {
-            this._contactService
-              .updateContact(data.contact, data.contact.id?.toString())
-              .subscribe({
-                next: () => {
-                  setTimeout(() => {
-                    this.loadContacts();
-                  }, 200);
-                },
-                error: (err) => console.log('Error Editing Contact', err),
-              });
+            return this._contactService.updateContact(
+              data.contact,
+              data.contact.id.toString()
+            );
           }
-        }
-      );
+          return EMPTY; // No request if no valid data
+        })
+      )
+      .subscribe({
+        next: () => this.loadContacts(),
+        error: (err) => console.error('Error processing contact', err),
+      });
   }
 
   public loadContacts(): void {
@@ -73,10 +66,10 @@ export class ContactsComponent implements OnInit {
   }
 
   public handleContactDelete(id: number): void {
-    this._contactService.deleteOneContact(id.toString()).subscribe();
-    setTimeout(() => {
-      this.loadContacts();
-    }, 500);
+    this._contactService.deleteOneContact(id.toString()).subscribe({
+      next: () => this.loadContacts(),
+      error: (err) => console.log('Error deleting contact', err),
+    });
   }
   public handleContactEdit(id: number): void {
     this._contactService.getOneContact(id.toString()).subscribe((data) => {

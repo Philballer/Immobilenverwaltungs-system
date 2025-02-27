@@ -12,6 +12,7 @@
 
     <app-google-autcomplete-address-searchbar
       (onAddressChange)="handleAddressSelected($event)"
+      [editData]="formData.address"
     ></app-google-autcomplete-address-searchbar>
 
     <div class="flex justify-between">

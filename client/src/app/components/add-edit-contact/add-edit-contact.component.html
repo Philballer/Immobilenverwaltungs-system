@@ -12,6 +12,7 @@
 
     <app-google-autcomplete-address-searchbar
       (onAddressChange)="handleAddressChange($event)"
+      [editData]="formData.address"
     ></app-google-autcomplete-address-searchbar>
 
     <mat-form-field appearance="fill" style="width: 100%">

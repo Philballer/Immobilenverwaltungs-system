@@ -6,8 +6,10 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { IProperty } from '../../types/main-types';
 import { DatatableComponent } from '../../components/datatable/datatable.component';
 import { PropertyService } from '../../services/property-service/property.service';
-import { Observable, Subscription } from 'rxjs';
+import { filter, Observable, Subscription, switchMap, EMPTY, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
+
+type IData = { property: IProperty; isEdited: boolean; cancel: boolean };
 
 @Component({
   selector: 'app-properties',
@@ -42,42 +44,33 @@ export class PropertiesComponent implements OnInit, OnDestroy {
 
     this.dialogSubscription = dialogRef
       .afterClosed()
-      .subscribe(
-        (data: { property: IProperty; isEdited: boolean; cancel: boolean }) => {
-          if (data.cancel) return;
+      .pipe(
+        filter((data: IData) => !!data && !data.cancel), // Ignore if canceled
 
+        switchMap((data) => {
           if (data.property && !isEdit) {
-            this._propertyService.createProperty(data.property).subscribe({
-              next: () => {
-                setTimeout(() => {
-                  this.loadProperties();
-                }, 200);
-              },
-              error: (err) => console.log('Error creating property', err),
-            });
+            return this._propertyService.createProperty(data.property);
           }
-
           if (data.property.id && isEdit) {
-            this._propertyService
-              .updateProperty(data.property, data.property.id?.toString())
-              .subscribe({
-                next: () => {
-                  setTimeout(() => {
-                    this.loadProperties();
-                  }, 200);
-                },
-                error: (err) => console.log('Error Editing property', err),
-              });
+            return this._propertyService.updateProperty(
+              data.property,
+              data.property.id.toString()
+            );
           }
-        }
-      );
+          return EMPTY; // No request if no valid data
+        })
+      )
+      .subscribe({
+        next: () => this.loadProperties(),
+        error: (err) => console.error('Error processing Prpoerty', err),
+      });
   }
 
   public handlePropertyDelete(id: number): void {
-    this._propertyService.deleteOneProperty(id.toString()).subscribe();
-    setTimeout(() => {
-      this.loadProperties();
-    }, 500);
+    this._propertyService.deleteOneProperty(id.toString()).subscribe({
+      next: () => this.loadProperties(),
+      error: (err) => console.log('Error deleting property', err),
+    });
   }
 
   public handlePropertyEdit(id: number): void {
